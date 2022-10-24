@@ -49,6 +49,15 @@ next.addEventListener('click', function(){
   
 });
 
+slider.addEventListener('mouseover', function(){
+  clearInterval(autoScroll);
+});
+
+slider.addEventListener('mouseout', function(){
+  autoScroll = setInterval(nextImg, 1000);
+})
+
+
 function nextImg (){
   if (counterImages === imagesArray.length - 1 && counterSelection === imagesArray.length - 1){
     items[counterImages].classList.remove('active');
