@@ -7,9 +7,16 @@ const imagesArray = ['01.jpg',
 
 let imagesTags = '';
 let selectionTags = '';
-
+const container = document.querySelector('.container');
 const slider = document.querySelector('.content-left');
 const imgSelect = document.querySelector('.img-select')
+let counterImages = 0;
+let counterSelection = 0;
+
+const next = document.querySelector('.next');
+const prev = document.querySelector('.prev');
+let autoScroll = setInterval(nextImg, 1000);
+let stopScroll;
 
 for(let i = 0; i < imagesArray.length; i++){
   imagesTags += `
@@ -23,11 +30,6 @@ for(let i = 0; i < imagesArray.length; i++){
   `;
 }
 
-let counterImages = 0;
-let counterSelection = 0;
-
-const next = document.querySelector('.next');
-const prev = document.querySelector('.prev');
 
 slider.innerHTML += imagesTags;
 imgSelect.innerHTML += selectionTags;
@@ -40,22 +42,21 @@ const selections = document.getElementsByClassName('selection');
 items[counterImages].classList.add('active');
 selections[counterSelection].classList.add('active');
 
-const autoScroll = setInterval(nextImg, 1000);
+
+
+container.addEventListener('mouseover', function(){
+  stopScroll = clearInterval(autoScroll);
+})
+
+container.addEventListener('mouseout', function(){
+  autoScroll = setInterval(nextImg, 1000);
+})
 
 next.addEventListener('click', function(){
   
-  clearInterval(autoScroll);
   nextImg();
   
 });
-
-slider.addEventListener('mouseover', function(){
-  clearInterval(autoScroll);
-});
-
-slider.addEventListener('mouseout', function(){
-  autoScroll = setInterval(nextImg, 1000);
-})
 
 
 function nextImg (){
@@ -78,6 +79,8 @@ function nextImg (){
 }
 
 prev.addEventListener('click', function(){
+
+  clearInterval(autoScroll);
   
   if (counterImages === 0 && counterSelection === 0){
     items[counterImages].classList.remove('active');
