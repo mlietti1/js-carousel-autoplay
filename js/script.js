@@ -44,6 +44,7 @@ const autoScroll = setInterval(nextImg, 1000);
 
 next.addEventListener('click', function(){
   
+  clearInterval(autoScroll);
   nextImg();
   
 });
