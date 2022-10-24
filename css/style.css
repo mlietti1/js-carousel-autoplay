@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  height: 400px;
+  width: 700px;
+  display: flex;
+  background-color: white;
+}
+
+.content-left {
+  background-color: burlywood;
+}
+
+.content-left img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.content-right {
+  background-color: brown;
+  position: relative;
+  height: 100%;
+}
+
+.img-select {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.img-select img {
+  height: 20%;
+  object-fit: cover;
+}
+
+
+.fa-solid {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+.btn {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  text-align: center;
+  line-height: 35px;
+  z-index: 99;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: gray;
+}
+
+.btn.prev {
+  top: 15px;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.btn.next {
+  bottom: 15px;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.content-left .item {
+  display: none;
+}
+
+.img-select .selection {
+  filter: brightness(0.5);
+}
+
+.content-left .item.active {
+  display: block;
+}
+
+.img-select .selection.active {
+  filter: brightness(1);
+  border: 2px solid lightgrey;
+}
